@@ -11,9 +11,6 @@ class Converter:
         rem_list =[]
         hex = ""
 
-        # if decimal is negative value
-        decimal = abs(decimal) if decimal < 0 else decimal
-
         if decimal < radix:
             if decimal in dict_val:
                 return dict_val[decimal]
@@ -24,13 +21,15 @@ class Converter:
             while int(decimal) > 0:
                 decimal = decimal / radix
                 float_val = decimal - int(decimal)
-
                 rem_list.append(int(float_val * radix))
             rem_list.reverse()
 
             for rem in rem_list:
                 if rem in dict_val:
                     rem = dict_val[rem]
-
                 hex += str(rem)
             return hex
+
+    def check_negative_val(self):
+        decimal = self.decimal
+        return abs(decimal) if decimal < 0 else decimal

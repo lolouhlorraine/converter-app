@@ -8,6 +8,9 @@ def decimal_to_hex():
     hex = ""
     if request.method == 'POST':
         decimal_val = int(request.form['decimal'])
-        hex = Converter(decimal_val).convert_decimal()
+        positive_decimal = Converter(decimal_val).check_negative_val()
+        hex = Converter(positive_decimal).convert_decimal()
+        if decimal_val < 0:
+            hex = "-" + hex
     return render_template('index.html', converted_val = hex)
         
