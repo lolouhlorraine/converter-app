@@ -22,7 +22,7 @@ python -m venv env
 python -m pip install -r requirements.txt
 ```
 
-### Run the Application on a development server
+### Run the application on a development server
 ```
 flask run
 ```
