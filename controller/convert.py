@@ -15,7 +15,7 @@ class Converter:
             if decimal in dict_val:
                 return dict_val[decimal]
             else:
-                return decimal
+                return str(decimal)
         
         if decimal >= radix:
             while int(decimal) > 0:
@@ -29,7 +29,3 @@ class Converter:
                     rem = dict_val[rem]
                 hex += str(rem)
             return hex
-
-    def check_negative_val(self):
-        decimal = self.decimal
-        return abs(decimal) if decimal < 0 else decimal
