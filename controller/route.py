@@ -1,7 +1,7 @@
 from flask import render_template, request, Blueprint
 from controller.convert import Converter
 
-converter = Blueprint('converter', __name__, template_folder='templates', static_folder='static')
+converter = Blueprint('converter', __name__)
 
 @converter.route('/', methods= ['GET','POST'])
 def decimal_to_hex():
