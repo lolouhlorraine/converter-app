@@ -12,7 +12,7 @@ class Converter:
 
         rem_list =[]
         hex = ""   
-           
+
         while int(decimal) > 0:
             decimal = decimal / radix
             float_val = decimal - int(decimal)
@@ -26,10 +26,7 @@ class Converter:
         return hex
 
     def convert_small_decimal(self):
-        decimal = self.decimal
-        dict_val = self.dict_val
-
-        if decimal in dict_val:
-            return dict_val[decimal]
+        if self.decimal in self.dict_val:
+            return self.dict_val[self.decimal]
         else:
-            return str(decimal)
+            return str(self.decimal)
