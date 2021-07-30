@@ -2,30 +2,34 @@ class Converter:
 
     def __init__(self, decimal_val):
         self.decimal = decimal_val
+        self.dict_val = {10:"A", 11:"B", 12:"C", 13:"D", 14:"E", 15:"F"}
+        self.radix = 16
 
-    def convert_decimal(self):
+    def convert_big_decimal(self):
         decimal = self.decimal
-        radix = 16
+        radix = self.radix
+        dict_val = self.dict_val
 
-        dict_val = {10:"A", 11:"B", 12:"C", 13:"D", 14:"E", 15:"F"}
         rem_list =[]
-        hex = ""
+        hex = ""   
+           
+        while int(decimal) > 0:
+            decimal = decimal / radix
+            float_val = decimal - int(decimal)
+            rem_list.append(int(float_val * radix))
+        rem_list.reverse()
 
-        if decimal < radix:
-            if decimal in dict_val:
-                return dict_val[decimal]
-            else:
-                return str(decimal)
-        
-        if decimal >= radix:
-            while int(decimal) > 0:
-                decimal = decimal / radix
-                float_val = decimal - int(decimal)
-                rem_list.append(int(float_val * radix))
-            rem_list.reverse()
+        for rem in rem_list:
+            if rem in dict_val:
+                rem = dict_val[rem]
+            hex += str(rem)
+        return hex
 
-            for rem in rem_list:
-                if rem in dict_val:
-                    rem = dict_val[rem]
-                hex += str(rem)
-            return hex
+    def convert_small_decimal(self):
+        decimal = self.decimal
+        dict_val = self.dict_val
+
+        if decimal in dict_val:
+            return dict_val[decimal]
+        else:
+            return str(decimal)
