@@ -28,5 +28,4 @@ class Converter:
     def convert_small_decimal(self):
         if self.decimal in self.dict_val:
             return self.dict_val[self.decimal]
-        else:
-            return str(self.decimal)
+        return str(self.decimal)
